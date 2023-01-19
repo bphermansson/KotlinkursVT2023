@@ -17,14 +17,10 @@ class MainActivity : AppCompatActivity() {
         btn_start.setOnClickListener(){
             Log.d("FragmentExample", "Start")
             supportFragmentManager.beginTransaction().replace(R.id.mainFragCon, StartFragment()).commit()
-            //supportFragmentManager.commit{
-
-            //}
         }
         btn_info.setOnClickListener(){
             Log.d("FragmentExample", "Info")
             supportFragmentManager.beginTransaction().replace(R.id.mainFragCon, InfoFragment()).commit()
         }
-
     }
 }

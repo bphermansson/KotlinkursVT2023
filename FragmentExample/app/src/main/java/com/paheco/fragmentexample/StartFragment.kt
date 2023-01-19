@@ -12,7 +12,6 @@ class StartFragment : Fragment() {
     var thecounter = 0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
     }
 
     override fun onCreateView(
@@ -37,12 +36,9 @@ class StartFragment : Fragment() {
             var readmorefrag = ReadMoreFragment()
             readmorefrag.currentNr = thecounter
             requireActivity().supportFragmentManager.beginTransaction().add(R.id.mainFragCon, readmorefrag).addToBackStack("mystack").commit()
-
-
         }
     }
     override fun onStart() {
         super.onStart()
-
     }
 }
