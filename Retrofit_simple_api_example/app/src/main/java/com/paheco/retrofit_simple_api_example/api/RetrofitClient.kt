@@ -19,7 +19,7 @@ object RetrofitClient {
 
 
         var retrofit: Retrofit = retrofit2.Retrofit.Builder()
-            .baseUrl("https://reqres.in")
+            .baseUrl("https://reqbin.com")
             .addConverterFactory(GsonConverterFactory.create())
             .client(mOkHttpClient)
             .build()

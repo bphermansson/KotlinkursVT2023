@@ -4,13 +4,18 @@ package com.paheco.retrofit_simple_api_example
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.service.autofill.UserData
 import android.util.Log
 import android.widget.TextView
 import android.widget.Toast
 import androidx.lifecycle.lifecycleScope
 import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 import com.paheco.retrofit_simple_api_example.api.ApiInterface
 import com.paheco.retrofit_simple_api_example.api.RetrofitClient
+import com.paheco.retrofit_simple_api_example.models.jsonData
+import org.json.JSONArray
+import org.json.JSONObject
 
 class MainActivity : AppCompatActivity() {
     lateinit var txtData: TextView
@@ -28,16 +33,19 @@ class MainActivity : AppCompatActivity() {
             try {
                 val response = apiInterface.getAllUsers()
                 if (response.isSuccessful()) {
-                    //your code for handaling success response
                     var json = Gson().toJson(response.body())
-                    if (response.body()?.data?.size!! <= 0) {
+	                val gson = Gson()
+                    var testModel = gson.fromJson(json, jsonData::class.java)
+
+                    if (response.body()?.success?.length == 0) {
                         Toast.makeText(
                             this@MainActivity,
                             "No Data ",
                             Toast.LENGTH_LONG
                         ).show()
                     } else {
-                        txtData.setText(json)
+                        txtData.text = testModel.success
+                        println(testModel.success)
                     }
 
                 } else {
