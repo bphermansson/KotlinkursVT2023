@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/firstPageFragment">
+
+    <fragment
+        android:id="@+id/firstPageFragment"
+        android:name="com.paheco.navigationintro.FirstPageFragment"
+        android:label="fragment_first_page"
+        tools:layout="@layout/fragment_first_page" >
+        <action
+            android:id="@+id/action_firstPageFragment_to_thirdPageFragment3"
+            app:destination="@id/thirdPageFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/secondFragmentName"
+        android:name="com.paheco.navigationintro.secondPageFragment"
+        android:label="fragment_second_name"
+        tools:layout="@layout/fragment_second_page" />
+    <fragment
+        android:id="@+id/thirdPageFragment"
+        android:name="com.paheco.navigationintro.thirdPageFragment"
+        android:label="fragment_third_page"
+        tools:layout="@layout/fragment_third_page" />
+</navigation>

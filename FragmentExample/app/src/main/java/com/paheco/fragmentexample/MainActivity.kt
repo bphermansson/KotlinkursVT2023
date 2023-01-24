@@ -21,6 +21,13 @@ class MainActivity : AppCompatActivity() {
         btn_info.setOnClickListener(){
             Log.d("FragmentExample", "Info")
             supportFragmentManager.beginTransaction().replace(R.id.mainFragCon, InfoFragment()).commit()
+            /*
+            Easier to read:
+              supportFragmentManager.commit {
+              setReorderingAllowed(true)
+              add<DataFragment>(R.id.fragmentContainerView)
+          }
+             */
         }
     }
 }
