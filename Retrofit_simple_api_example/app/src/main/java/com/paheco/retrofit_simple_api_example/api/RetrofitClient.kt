@@ -1,29 +1,25 @@
 package com.paheco.retrofit_simple_api_example.api
-import com.paheco.retrofit_simple_api_example.models.ResponseListUsers
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-
 object RetrofitClient {
 
     fun getInstance(): Retrofit {
-        var mHttpLoggingInterceptor = HttpLoggingInterceptor()
+        val mHttpLoggingInterceptor = HttpLoggingInterceptor()
             .setLevel(HttpLoggingInterceptor.Level.BODY)
 
-        var mOkHttpClient = OkHttpClient
+        val mOkHttpClient = OkHttpClient
             .Builder()
             .addInterceptor(mHttpLoggingInterceptor)
             .build()
 
-
-        var retrofit: Retrofit = retrofit2.Retrofit.Builder()
+        val retrofit: Retrofit = Retrofit.Builder()
             .baseUrl("https://reqbin.com")
             .addConverterFactory(GsonConverterFactory.create())
             .client(mOkHttpClient)
             .build()
         return retrofit
     }
-
 }
