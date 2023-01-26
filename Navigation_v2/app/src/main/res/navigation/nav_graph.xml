@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/startFragment">
+
+    <fragment
+        android:id="@+id/startFragment"
+        android:name="com.paheco.navigation_v2.StartFragment"
+        android:label="fragment_start"
+        tools:layout="@layout/fragment_start" >
+        <action
+            android:id="@+id/action_startFragment_to_otherFragment"
+            app:destination="@id/otherFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popExitAnim="@android:anim/fade_out" />
+        <action
+            android:id="@+id/action_startFragment_to_fancyFragment"
+            app:destination="@id/fancyFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/otherFragment"
+        android:name="com.paheco.navigation_v2.OtherFragment"
+        android:label="fragment_other"
+        tools:layout="@layout/fragment_other" >
+        <argument
+            android:name="personName"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/fancyFragment"
+        android:name="com.paheco.navigation_v2.FancyFragment"
+        android:label="fragment_fancy"
+        tools:layout="@layout/fragment_fancy" >
+        <action
+            android:id="@+id/action_fancyFragment_to_otherFragment"
+            app:destination="@id/otherFragment" />
+    </fragment>
+</navigation>
