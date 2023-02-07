@@ -19,11 +19,13 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
+        Log.d("pia11debug", "Start")
         fetchfruits()
     }
 
     fun fetchfruits() {
+        Log.d("pia11debug", "fetchfruits")
+
         val personRecview = findViewById<RecyclerView>(R.id.fruitRV)
         personRecview.adapter = fadapter
         personRecview.layoutManager = LinearLayoutManager(this)
@@ -45,25 +47,25 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun loadFruits() {
+            Log.d("pia11debug", "loadFruits")
             // Hämta lista med objekt
             val database = Firebase.database
-            val fruitSallad = database.getReference("fruitsallad2")
+            val fruitSallad = database.getReference("fruitsallad")
             fruitSallad.get().addOnSuccessListener {
                 val fbfruits = mutableListOf<Fruit>()
                 it.children.forEach { childsnap ->
                     fbfruits.add(childsnap.getValue<Fruit>()!!)
                 }
-                /* Loopa genom alla resultat
+                // Loopa genom alla resultat
                 for (fruit in fbfruits) {
                     Log.d("pia11debug", fruit.name!!)
                     Log.d("pia11debug", fruit.color!!)
                 }
-                */
+
                 fadapter.allfruit = fbfruits
                 fadapter.notifyDataSetChanged()
             }.addOnFailureListener {
-                Log.d("pia11debugLOG", "Push failed")
-                println("FAIL!" + it)
+                Log.d("pia11debug", "Fetch failed")
             }
         }
     data class User(val username: String? = null, val email: String? = null) {}
