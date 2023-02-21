@@ -8,33 +8,23 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [StartFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class StartFragment : Fragment() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
+    lateinit var listadapter: PersonAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_start, container, false)
     }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        listadapter = PersonAdapter{
+            requireActivity().supportFragmentManager.beginTransaction().replace(R.id.fragmentContainerView, FragmentDetail()).addToBackStack("mystack").commit()
+        }
         val personRecview = requireActivity().findViewById<RecyclerView>(R.id.personsRV)
-        personRecview.adapter = PersonAdapter()
-        personRecview.layoutManager = LinearLayoutManager(context)
+        personRecview.adapter = listadapter
+        personRecview.layoutManager = LinearLayoutManager(requireContext())
     }
-
 }
