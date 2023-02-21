@@ -12,21 +12,31 @@ import androidx.lifecycle.lifecycleScope
 import com.google.gson.Gson
 import com.paheco.willitrain.api.SmhiApiInterface
 import com.paheco.willitrain.api.SmhiRetrofitClient
+import com.paheco.willitrain.databinding.FragmentStartBinding
 import com.paheco.willitrain.models.Smhimaindata
 import java.time.LocalTime
 
 class startFragment : Fragment() {
+    private  var _binding: FragmentStartBinding? = null
+    private  val binding get() = _binding!!
 
-
+    /*
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_start, container, false)
+    ): View {
+        //_binding = FragmentStartBinding.inflate(inflater, container, false)
+        //return binding.root
     }
+
+     */
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        _binding = FragmentStartBinding.bind(view)
+binding.btnSample.text="HI"
+        binding.tvSample.text="123"
+
         // GUI elements. TODO: could use a binding instead...
         var smhiTempTV = requireActivity().findViewById<TextView>(R.id.smhiTempTV)
         var smhiHumTV = requireActivity().findViewById<TextView>(R.id.smhiHumTV)
@@ -35,8 +45,7 @@ class startFragment : Fragment() {
         var updateTV = requireActivity().findViewById<TextView>(R.id.txtUpdatedAt)
         var updateTVtext = requireActivity().findViewById<TextView>(R.id.txtUpdatedAt).text.toString()
 
-
-        getSmhiData(view)
+        getSmhiData(view, binding)
 
 
 
@@ -45,7 +54,11 @@ class startFragment : Fragment() {
         updateTV.text= updateTVtext + " " + tInt
     }
 
-    fun getSmhiData(view: View) {
+    fun getSmhiData(view: View, binding: FragmentStartBinding) {
+
+        binding.tvSample.text="WAIT"
+        binding.btnSample.text="HI"
+
         val smhiretrofit = SmhiRetrofitClient.getInstance()
         val smhiApiInterface = smhiretrofit.create(SmhiApiInterface::class.java)
         lifecycleScope.launchWhenCreated {
@@ -63,9 +76,10 @@ class startFragment : Fragment() {
                     cleantsvalue = cleantsvalue.removeSuffix("]")     // This works!
 
                     Log.i("willitrainlog", cleantsvalue)
-                    smhiTempTV.text = cleantsvalue
-                    Context.sm
+                    //smhiTempTV.text = cleantsvalue
                     //smhiHumTV.text =
+
+                    binding.tvSample.text="YEAH"
 
 
                     //val tv = Tempvalues(tvalue = tempmain.unit.toFloat())
