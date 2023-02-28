@@ -4,27 +4,28 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".startFragment">
+    tools:context=".StartFragment">
 
     <TextView
         android:id="@+id/headlineTV"
         android:layout_width="400dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="8dp"
         android:background="#AFBAFD"
-        android:text="Will it rain?"
+        android:text="@string/gui_title"
         android:textAlignment="center"
-        android:textSize="34dp"
+        android:textSize="34sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/smhiTV"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="SMHI"
+        android:text="@string/smhi_title"
+        android:textAlignment="center"
         android:textSize="34sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -34,57 +35,57 @@
         android:id="@+id/metnoTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="52dp"
-        android:text="MET.NO"
+        android:layout_marginTop="24dp"
+        android:text="@string/metno_title"
         android:textSize="34sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/smhiTV" />
+        app:layout_constraintTop_toBottomOf="@+id/divider" />
 
     <TextView
         android:id="@+id/smhiTempTV"
-        android:layout_width="0dp"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        app:layout_constraintEnd_toStartOf="@+id/smhiHumTV"
+        android:textSize="48sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/smhiTV"
-        tools:text="smhitempTV" />
+        tools:text="32.0C" />
 
     <TextView
         android:id="@+id/smhiHumTV"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/smhiTempTV"
-        app:layout_constraintTop_toBottomOf="@+id/smhiTV"
-        tools:text="smhiHumTV" />
-
-    <TextView
-        android:id="@+id/metnoHumTV"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.445"
-        app:layout_constraintStart_toEndOf="@+id/metnoTempTV"
-        app:layout_constraintTop_toBottomOf="@+id/metnoTV"
-        tools:text="smhiHumTV" />
-
-    <TextView
-        android:id="@+id/metnoTempTV"
-        android:layout_width="0dp"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
-        app:layout_constraintEnd_toStartOf="@+id/metnoHumTV"
+        android:textSize="48sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/smhiTV"
+        tools:text="100%" />
+
+    <TextView
+        android:id="@+id/metnoHumTV"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:textSize="48sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/metnoTV"
+        tools:text="100%" />
+
+    <TextView
+        android:id="@+id/metnoTempTV"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:textSize="48sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/metnoTV"
-        tools:text="metnoTempTV" />
+        tools:text="33.3C" />
 
     <TextView
         android:id="@+id/txtUpdatedAt"
@@ -93,12 +94,20 @@
         android:background="#AFBAFD"
         android:gravity="bottom|center"
         android:padding="5dip"
-        android:text="Updated at: "
+        android:text="@string/updated_at"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/metnoHumTV"
         app:layout_constraintVertical_bias="1.0" />
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:layout_marginTop="24dp"
+        android:background="?android:attr/listDivider"
+        app:layout_constraintTop_toBottomOf="@+id/smhiTempTV" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

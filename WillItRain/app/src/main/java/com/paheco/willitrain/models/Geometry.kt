@@ -3,9 +3,9 @@ package com.paheco.willitrain.models
 import com.google.gson.annotations.SerializedName
 
 data class Geometry(
-    @SerializedName("type")
-    var type: String,
+    //@SerializedName("type")
+    //var types: String,
     @SerializedName("coordinates")
-    var coordinates: ArrayList<ArrayList<Double>>
+    var coordlinates: ArrayList<ArrayList<Double>>,
 )
 
