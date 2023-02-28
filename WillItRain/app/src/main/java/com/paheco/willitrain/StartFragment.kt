@@ -82,17 +82,23 @@ class StartFragment : Fragment() {
                     val json = Gson().toJson(response.body())
                     val receivedData = Gson().fromJson(json, Metnomaindata::class.java)
 
-                    // Met.no temperature
-                    var tempmain = receivedData.properties!!.timeseries[0].time
+                    // Met.no temperature and more
+                    var metnoTime = receivedData.metnoProperties!!.timeseries[0].time
+                    var metnoTemp = receivedData.metnoProperties!!.timeseries[0].metnoData?.metnoInstant?.metnoDetails?.airTemperature
+                    var metnoHum = receivedData.metnoProperties!!.timeseries[0].metnoData?.metnoInstant?.metnoDetails?.relativeHumidity
+                    var metnoWindspeed = receivedData.metnoProperties!!.timeseries[0].metnoData?.metnoInstant?.metnoDetails?.windSpeed
+                    var metnoWindDir = receivedData.metnoProperties!!.timeseries[0].metnoData?.metnoInstant?.metnoDetails?.windFromDirection
+                    var metnoSymbol = receivedData.metnoProperties!!.timeseries[0].metnoData?.metnoNext1Hours?.metnoSummary?.symbolCode
 
-                    Log.i("willitrainlog", tempmain.toString())
-                    //var cleantsvalue = removeFixes(tempmain.values.toString())
-                    //binding.metnoTempTV.text = cleantsvalue.plus("C")
+                    /*
+                    Log.i("willitrainlog", metnoTime.toString())
+                    Log.i("willitrainlog", metnoTemp.toString() + "-" + metnoHum.toString())
+                    Log.i("willitrainlog", metnoWindspeed.toString() + "-" + metnoWindDir.toString())
+                    Log.i("willitrainlog", metnoSymbol.toString())
+                     */
 
-                    // Met.no Humidity
-                    //var hummain = receivedData.timeSeries[0].parameters[15]
-                    //var hsvalue = removeFixes(hummain.values.toString())
-                    //binding.metnoHumTV.text = hsvalue.plus("%")
+                    binding.metnoTempTV.text = metnoTemp.toString().plus("C")
+                    binding.metnoHumTV.text = metnoHum.toString().plus("%")
                 }
                 else {
                     // TODO: What if something goes wrong?

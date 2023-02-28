@@ -13,6 +13,14 @@ object MetnoRetrofitClient {
         val mOkHttpClient = OkHttpClient
             .Builder()
             .addInterceptor(mHttpLoggingInterceptor)
+            .addNetworkInterceptor { chain ->
+                chain.proceed(
+                    chain.request()
+                        .newBuilder()
+                        .header("User-Agent", "WillItRain")     // Fot met.no you have to specify a user agent.
+                        .build()
+                )
+            }
             .build()
 
         val metnoretrofit: Retrofit = Retrofit.Builder()

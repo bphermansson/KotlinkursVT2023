@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@id/navigation_fancy">
+
+    <fragment
+        android:id="@+id/navigation_home"
+        android:name="com.paheco.bottomnavigation.ui.home.HomeFragment"
+        android:label="@string/title_home"
+        tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/navigation_dashboard"
+        android:name="com.paheco.bottomnavigation.ui.dashboard.DashboardFragment"
+        android:label="@string/title_dashboard"
+        tools:layout="@layout/fragment_dashboard" />
+
+    <fragment
+        android:id="@+id/navigation_notifications"
+        android:name="com.paheco.bottomnavigation.ui.notifications.NotificationsFragment"
+        android:label="@string/title_notifications"
+        tools:layout="@layout/fragment_notifications" />
+    <fragment
+        android:id="@+id/navigation_fancy"
+        android:name="com.paheco.bottomnavigation.FancyFragment"
+        android:label="Fancy"
+        tools:layout="@layout/fragment_fancy">
+        <action
+            android:id="@+id/action_navigation_fancy_to_fancyDetailFragment"
+            app:destination="@id/fancyDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/fancyDetailFragment"
+        android:name="com.paheco.FancyDetailFragment"
+        android:label="fragment_fancy_detail"
+        tools:layout="@layout/fragment_fancy_detail" />
+
+</navigation>

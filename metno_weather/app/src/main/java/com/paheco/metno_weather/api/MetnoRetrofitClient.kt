@@ -21,7 +21,6 @@ object MetnoRetrofitClient {
                         .build()
                 )
             }
-
             .build()
 
         val metnoretrofit: Retrofit = Retrofit.Builder()
