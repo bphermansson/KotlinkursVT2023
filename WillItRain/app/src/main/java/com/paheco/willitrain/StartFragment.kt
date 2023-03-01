@@ -61,6 +61,17 @@ class StartFragment : Fragment() {
                     var hummain = receivedData.timeSeries[0].parameters[15]
                     var hsvalue = removeFixes(hummain.values.toString())
                     binding.smhiHumTV.text = hsvalue.plus("%")
+
+                    var smhiPressure = receivedData.timeSeries[0].parameters[11]
+                    var smhiWindspeed = receivedData.timeSeries[0].parameters[14]
+                    var smhiWinddir = receivedData.timeSeries[0].parameters[13]
+                    var smhiWeathersymbol = receivedData.timeSeries[0].parameters[18]
+
+                    binding.smhiPressure.text = smhiPressure.values[0].toString().plus("hPa")
+                    binding.smhiWindspeed.text = smhiWindspeed.values[0].toString().plus("m/S")
+                    binding.smhiWinddir.text = smhiWinddir.values[0].toString()
+                    binding.smhiWeathersymbol.text = smhiWeathersymbol.values[0].toString() // TODO: Conversion table number -> weather type
+
                 }
                 else {
                     // TODO: What if something goes wrong?

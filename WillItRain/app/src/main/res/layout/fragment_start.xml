@@ -7,6 +7,28 @@
     tools:context=".StartFragment">
 
     <TextView
+        android:id="@+id/smhiWeathersymbol"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:textSize="48sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/smhiWinddir"
+        tools:text="Clear" />
+
+    <TextView
+        android:id="@+id/smhiWinddir"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:textSize="48sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/smhiHumTV"
+        tools:text="100" />
+
+    <TextView
         android:id="@+id/headlineTV"
         android:layout_width="400dp"
         android:layout_height="wrap_content"
@@ -53,6 +75,28 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/smhiTV"
         tools:text="32.0C" />
+
+    <TextView
+        android:id="@+id/smhiWindspeed"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:textSize="48sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/smhiTempTV"
+        tools:text="25m/S" />
+
+    <TextView
+        android:id="@+id/smhiPressure"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:textSize="34sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/smhiWindspeed"
+        tools:text="1040hPa" />
 
     <TextView
         android:id="@+id/smhiHumTV"
@@ -106,8 +150,19 @@
         android:id="@+id/divider"
         android:layout_width="match_parent"
         android:layout_height="5dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="168dp"
         android:background="?android:attr/listDivider"
-        app:layout_constraintTop_toBottomOf="@+id/smhiTempTV" />
+        app:layout_constraintTop_toBottomOf="@+id/smhiTempTV"
+        tools:layout_editor_absoluteX="-5dp" />
+
+    <Button
+        android:id="@+id/refreshBTN"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="@string/refresh"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/metnoTempTV" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
