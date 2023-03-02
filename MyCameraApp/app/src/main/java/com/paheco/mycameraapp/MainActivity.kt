@@ -35,6 +35,7 @@ class MainActivity : AppCompatActivity() {
             theimage.setImageBitmap(bitmap)
         }
         else {
+            // TODO: Handle error
         }
     }
 

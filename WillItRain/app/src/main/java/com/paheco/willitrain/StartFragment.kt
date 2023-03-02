@@ -32,12 +32,22 @@ class StartFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        getSmhiData(view, binding)
-        getMetnoData(view, binding)
+        // TODO: Use a viewmodel for the logic
 
         // Set update time
         val tInt = LocalTime.now().toString().substringBefore(".")
         binding.txtUpdatedAt.text = "${binding.txtUpdatedAt.text} ${tInt}"
+
+        binding.refreshBTN.setOnClickListener(){
+
+        }
+
+    }
+
+    fun getWeatherdata(){
+        getSmhiData(view, binding)
+        getMetnoData(view, binding)
+
     }
 
     fun getSmhiData(view: View, binding: FragmentStartBinding) {
