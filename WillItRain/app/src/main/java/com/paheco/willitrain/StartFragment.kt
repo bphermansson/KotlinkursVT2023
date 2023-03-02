@@ -34,6 +34,8 @@ class StartFragment : Fragment() {
 
         // TODO: Use a viewmodel for the logic
 
+        getWeatherdata(view)
+
         // Set update time
         val tInt = LocalTime.now().toString().substringBefore(".")
         binding.txtUpdatedAt.text = "${binding.txtUpdatedAt.text} ${tInt}"
@@ -44,7 +46,7 @@ class StartFragment : Fragment() {
 
     }
 
-    fun getWeatherdata(){
+    fun getWeatherdata(view: View){
         getSmhiData(view, binding)
         getMetnoData(view, binding)
 
