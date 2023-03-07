@@ -20,11 +20,7 @@ class MainActivity : AppCompatActivity() {
         // setting text view
         var textView = findViewById<TextView>(R.id.textView)
         textView.text = viewModel.number.toString()
-        var button = findViewById<Button>(R.id.Mybtn)
-
-
-        //handling button click event
-        button.setOnClickListener {
+        findViewById<Button>(R.id.Mybtn).setOnClickListener {
             viewModel.addOne()
             textView.text = viewModel.number.toString()
         }
