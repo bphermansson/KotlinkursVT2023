@@ -135,16 +135,15 @@
         android:id="@+id/txtUpdatedAt"
         android:layout_width="0dp"
         android:layout_height="40dp"
+        android:layout_marginTop="16dp"
         android:background="#AFBAFD"
         android:gravity="bottom|center"
         android:padding="5dip"
         android:text="@string/updated_at"
         android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/metnoHumTV"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toBottomOf="@+id/refreshBTN" />
 
     <View
         android:id="@+id/divider"
