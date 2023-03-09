@@ -6,15 +6,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
-import androidx.lifecycle.lifecycleScope
-import com.google.gson.Gson
-import com.paheco.willitrain.api.MetnoApiInterface
-import com.paheco.willitrain.api.MetnoRetrofitClient
-import com.paheco.willitrain.api.SmhiApiInterface
-import com.paheco.willitrain.api.SmhiRetrofitClient
+import androidx.lifecycle.ViewModelProvider
 import com.paheco.willitrain.databinding.FragmentStartBinding
-import com.paheco.willitrain.models.Smhimaindata
 import java.time.LocalTime
 
 class StartFragment : Fragment() {
@@ -34,7 +27,43 @@ class StartFragment : Fragment() {
 
         // TODO: Use a viewmodel for the logic
 
-        getWeatherdata(view)
+        // A view model instance
+        var viewModel: MainActivityViewModel = ViewModelProvider(this).get(MainActivityViewModel::class.java)
+        Log.i ("willitrainlog", viewModel.number.toString())
+
+        SmhiAPI().loadSmhidata() { receivedData -> Unit
+            //Log.i("willitrainlog", receivedData.approvedTime.toString())
+            var smhitemp = removeFixes(receivedData.timeSeries[0].parameters[10].values.toString())
+            Log.i("willitrainlog", "Temp: $smhitemp" )
+            binding.smhiTempTV.text = smhitemp.plus("C")
+
+            var hummain = receivedData.timeSeries[0].parameters[15]
+            var hsvalue = removeFixes(hummain.values.toString())
+            binding.smhiHumTV.text = hsvalue.plus("%")
+
+            var smhiPressure = receivedData.timeSeries[0].parameters[11]
+            var smhiWindspeed = receivedData.timeSeries[0].parameters[14]
+            var smhiWinddir = receivedData.timeSeries[0].parameters[13]
+            var smhiWeathersymbol = receivedData.timeSeries[0].parameters[18]
+
+            binding.smhiPressure.text = smhiPressure.values[0].toString().plus("hPa")
+            binding.smhiWindspeed.text = smhiWindspeed.values[0].toString().plus("m/S")
+
+            val wType = arrayOf("Clear sky", "Nearly clear sky", "Variable cloudiness", "Halfclear sky", "Cloudy sky", "Overcast", "Fog", "Light rain showers", "Moderate rain showers", "Heavy rain showers", "Thunderstorm", "Light sleet showers", "Moderate sleet showers", "Heavy sleet showers", "Light snow showers", "Moderate snow showers", "Heavy snow showers", "Light rain", "Moderate rain", "Heavy rain", "Thunder", "Light sleet", "Moderate sleet", "Heavy sleet", "Light snowfall", "Moderate snowfall", "Heavy snowfall")
+            var wSymbol = wType[smhiWeathersymbol.values[0].toInt()]
+            Log.i("willitrainlog", "Weather type: $wSymbol" )
+            binding.smhiWeathersymbol.text = wSymbol
+
+            // Convert wind direction number to a direction
+            val direction = listOf("N","NNE","NE","ENE","E","ESE","SE","SSE","S","SSW","SW","WSW","W","WNW","NW","NNW","N")
+            val dirAsText = direction[((smhiWinddir.values[0]+11.25)/22.5).toInt()]
+            Log.i("willitrainlog", "Dir: $dirAsText" )
+            binding.smhiWinddir.text = dirAsText
+
+
+        }
+
+        //getWeatherdata(view)
 
         // Set update time
         val tInt = LocalTime.now().toString().substringBefore(".")
@@ -47,11 +76,11 @@ class StartFragment : Fragment() {
     }
 
     fun getWeatherdata(view: View){
-        getSmhiData(view, binding)
-        getMetnoData(view, binding)
+        //getSmhiData(view, binding)
+        //getMetnoData(view, binding)
 
     }
-
+/*
     fun getSmhiData(view: View, binding: FragmentStartBinding) {
         val smhiretrofit = SmhiRetrofitClient.getInstance()
         val smhiApiInterface = smhiretrofit.create(SmhiApiInterface::class.java)
@@ -93,7 +122,8 @@ class StartFragment : Fragment() {
             }
         }
     }
-
+ */
+/*
     fun getMetnoData(view: View, binding: FragmentStartBinding) {
         val metnoretrofit = MetnoRetrofitClient.getInstance()
         val metnoApiInterface = metnoretrofit.create(MetnoApiInterface::class.java)
@@ -133,10 +163,7 @@ class StartFragment : Fragment() {
         }
     }
 
-    class Tempvalues (
-        var tvalue: Float,
-        var tunit: String
-        )
+ */
     override fun onDestroyView() {
         super.onDestroyView()
     }
