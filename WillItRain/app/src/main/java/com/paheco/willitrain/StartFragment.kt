@@ -48,17 +48,18 @@ class StartFragment : Fragment() {
 
             binding.smhiPressure.text = smhiPressure.values[0].toString().plus("hPa")
             binding.smhiWindspeed.text = smhiWindspeed.values[0].toString().plus("m/S")
-            binding.smhiWinddir.text = smhiWinddir.values[0].toString()
-            binding.smhiWeathersymbol.text = smhiWeathersymbol.values[0].toString() // TODO: Conversion table number -> weather type
 
-            //{% set direction = ['N','NNE','NE','ENE','E','ESE','SE','SSE','S','SSW','SW','WSW','W','WNW','NW','NNW','N'] %}
-            //{% set degree = states('sensor.satenas_vindriktning')|float %}
-            //{{ direction[((degree+11.25)/22.5)|int] }}
+            val wType = arrayOf("Clear sky", "Nearly clear sky", "Variable cloudiness", "Halfclear sky", "Cloudy sky", "Overcast", "Fog", "Light rain showers", "Moderate rain showers", "Heavy rain showers", "Thunderstorm", "Light sleet showers", "Moderate sleet showers", "Heavy sleet showers", "Light snow showers", "Moderate snow showers", "Heavy snow showers", "Light rain", "Moderate rain", "Heavy rain", "Thunder", "Light sleet", "Moderate sleet", "Heavy sleet", "Light snowfall", "Moderate snowfall", "Heavy snowfall")
+            var wSymbol = wType[smhiWeathersymbol.values[0].toInt()]
+            Log.i("willitrainlog", "Weather type: $wSymbol" )
+            binding.smhiWeathersymbol.text = wSymbol
+
+            // Convert wind direction number to a direction
             val direction = listOf("N","NNE","NE","ENE","E","ESE","SE","SSE","S","SSW","SW","WSW","W","WNW","NW","NNW","N")
-            var dir = (smhiWinddir.values[0]+11.25)/22.5
-            var direct = direction[dir.toInt()]
-            Log.i("willitrainlog", "Dir: $dir" )
-            Log.i("willitrainlog", "Dir: $direct" )
+            val dirAsText = direction[((smhiWinddir.values[0]+11.25)/22.5).toInt()]
+            Log.i("willitrainlog", "Dir: $dirAsText" )
+            binding.smhiWinddir.text = dirAsText
+
 
         }
 
