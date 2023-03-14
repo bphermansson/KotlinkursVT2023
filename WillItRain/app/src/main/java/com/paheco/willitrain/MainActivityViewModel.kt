@@ -12,4 +12,7 @@ class MainActivityViewModel : ViewModel() {
     fun addOne() {
         number++
     }
+    fun getSmhiData(){
+
+    }
 }

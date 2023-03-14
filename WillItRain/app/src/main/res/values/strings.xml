@@ -7,4 +7,6 @@
     <string name="metno_title">MET.NO</string>
     <string name="updated_at">Updated at:</string>
     <string name="refresh">Refresh</string>
+    <string name="changeToMetno">Met.no</string>
+    <string name="changeToSmhi">Smhi</string>
 </resources>

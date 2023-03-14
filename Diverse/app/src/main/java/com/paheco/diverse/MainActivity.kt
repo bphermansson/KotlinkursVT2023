@@ -38,12 +38,12 @@ class MainActivity : AppCompatActivity() {
         if (user != null) {
             val navFragHost = findViewById<FragmentContainerView>(R.id.navFragHost)
             val nav = navFragHost.findNavController()
-            //nav.setGraph(R.navigation.nav_graph)
+            nav.setGraph(R.navigation.nav_graph)
         }
         else {
             val navFragHost = findViewById<FragmentContainerView>(R.id.navFragHost)
             val nav = navFragHost.findNavController()
-            //nav.setGraph(R.navigation.nav_graph_login2)
+            nav.setGraph(R.navigation.nav_login_graph)
         }
     }
 }

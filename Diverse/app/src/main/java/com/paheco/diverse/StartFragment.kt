@@ -45,11 +45,13 @@ class StartFragment : Fragment() {
             var calchelp = CalcHelper()
             calchelp.loadNumbers()
 
+            /*
             val n1 = calchelp.textToNumber(number1)
             val n2 = calchelp.textToNumber(number2)
             val resultNumber = calchelp.numberToText(n1 + n2)
+             */
 
-            view.findViewById<TextView>(R.id.startResult).text = resultNumber
+            view.findViewById<TextView>(R.id.startResult).text = calchelp.calcStrings(number1, number2)
         }
     }
 

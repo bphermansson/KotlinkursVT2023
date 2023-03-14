@@ -10,7 +10,7 @@ class SmhiAPI {
     private val client = OkHttpClient()
 
     fun loadSmhidata(callback: (Smhidata) -> Unit) {
-        val req = Request.Builder().url("https://opendata-download-metfcst.smhi.se/api/category/pmp3g/version/2/geotype/point/lon/12.75277/lat/58.38920/data.json").build()
+        val req = Request.Builder().url(MainActivity().smhiURL).build()
         client.newCall(req).enqueue(object : Callback {
             override fun onFailure(call: Call, e: IOException) {
                 Log.i("willitrainlog", "NOT OK")
@@ -32,7 +32,7 @@ class SmhiAPI {
             }
         })
     }
-
+/*
     fun loadData() {
         val req = Request.Builder().url("https://opendata-download-metfcst.smhi.se/api/category/pmp3g/version/2/geotype/point/lon/12.75277/lat/58.38920/data.json").build()
 
@@ -63,5 +63,7 @@ class SmhiAPI {
         }
 
          */
-    }
+
+
+ */
 }

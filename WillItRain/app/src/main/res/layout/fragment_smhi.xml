@@ -13,8 +13,8 @@
         android:layout_marginEnd="32dp"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/textView6"
-        app:layout_constraintTop_toBottomOf="@+id/textView6"
+        app:layout_constraintStart_toStartOf="@+id/smhiweathertypeLabel"
+        app:layout_constraintTop_toBottomOf="@+id/smhiweathertypeLabel"
         tools:text="Clear" />
 
     <TextView
@@ -24,7 +24,7 @@
         android:layout_marginEnd="16dp"
         android:textSize="48sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4"
+        app:layout_constraintTop_toBottomOf="@+id/smhiwinddirLabel"
         tools:text="100" />
 
     <TextView
@@ -53,25 +53,13 @@
         app:layout_constraintTop_toBottomOf="@+id/headlineTV" />
 
     <TextView
-        android:id="@+id/metnoTV"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:text="@string/metno_title"
-        android:textSize="34sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/divider" />
-
-    <TextView
         android:id="@+id/smhiTempTV"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:textSize="48sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/smhitempLabel"
         tools:text="32.0C" />
 
     <TextView
@@ -79,8 +67,8 @@
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:textSize="48sp"
-        app:layout_constraintStart_toStartOf="@+id/textView3"
-        app:layout_constraintTop_toBottomOf="@+id/textView3"
+        app:layout_constraintStart_toStartOf="@+id/smhiwindspeedLabel"
+        app:layout_constraintTop_toBottomOf="@+id/smhiwindspeedLabel"
         tools:text="25m/S" />
 
     <TextView
@@ -88,8 +76,8 @@
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:textSize="34sp"
-        app:layout_constraintStart_toStartOf="@+id/textView5"
-        app:layout_constraintTop_toBottomOf="@+id/textView5"
+        app:layout_constraintStart_toStartOf="@+id/smhipressureLabel"
+        app:layout_constraintTop_toBottomOf="@+id/smhipressureLabel"
         tools:text="1040hPa" />
 
     <TextView
@@ -99,33 +87,11 @@
         android:layout_marginEnd="16dp"
         android:textSize="48sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2"
+        app:layout_constraintTop_toBottomOf="@+id/smhihumidityLabel"
         tools:text="100%" />
 
     <TextView
-        android:id="@+id/metnoHumTV"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:textSize="48sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/metnoTV"
-        tools:text="100%" />
-
-    <TextView
-        android:id="@+id/metnoTempTV"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:textSize="48sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/metnoTV"
-        tools:text="33.3C" />
-
-    <TextView
-        android:id="@+id/txtUpdatedAt"
+        android:id="@+id/smhitxtUpdatedAt"
         android:layout_width="0dp"
         android:layout_height="40dp"
         android:layout_marginTop="16dp"
@@ -136,29 +102,30 @@
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/refreshBTN" />
-
-    <View
-        android:id="@+id/divider"
-        android:layout_width="match_parent"
-        android:layout_height="5dp"
-        android:layout_marginTop="16dp"
-        android:background="?android:attr/listDivider"
-        app:layout_constraintTop_toBottomOf="@+id/smhiWeathersymbol"
-        tools:layout_editor_absoluteX="-5dp" />
+        app:layout_constraintTop_toBottomOf="@+id/smhirefreshBTN" />
 
     <Button
-        android:id="@+id/refreshBTN"
+        android:id="@+id/smhirefreshBTN"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="@string/refresh"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/metnoTempTV" />
+        app:layout_constraintTop_toBottomOf="@+id/metnoBtn" />
+
+    <Button
+        android:id="@+id/metnoBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/changeToMetno"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/smhiWeathersymbol" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/smhitempLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -167,7 +134,7 @@
         app:layout_constraintTop_toBottomOf="@+id/smhiTV" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/smhihumidityLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -176,7 +143,7 @@
         app:layout_constraintTop_toBottomOf="@+id/smhiTV" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/smhiwindspeedLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Wind speed"
@@ -184,7 +151,7 @@
         app:layout_constraintTop_toBottomOf="@+id/smhiTempTV" />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/smhiwinddirLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Wind direction"
@@ -192,7 +159,7 @@
         app:layout_constraintTop_toBottomOf="@+id/smhiHumTV" />
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/smhipressureLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Air pressure"
@@ -200,7 +167,7 @@
         app:layout_constraintTop_toBottomOf="@+id/smhiWindspeed" />
 
     <TextView
-        android:id="@+id/textView6"
+        android:id="@+id/smhiweathertypeLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Weather type"

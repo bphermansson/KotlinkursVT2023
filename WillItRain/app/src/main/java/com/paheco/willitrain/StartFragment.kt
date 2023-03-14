@@ -7,18 +7,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
-import com.paheco.willitrain.databinding.FragmentStartBinding
+import com.paheco.willitrain.databinding.FragmentSmhiBinding
 import java.time.LocalTime
 
 class StartFragment : Fragment() {
-    private  var _binding: FragmentStartBinding? = null
+    private  var _binding: FragmentSmhiBinding? = null
     private  val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentStartBinding.inflate(inflater, container, false)
+        _binding = FragmentSmhiBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -32,7 +32,6 @@ class StartFragment : Fragment() {
         Log.i ("willitrainlog", viewModel.number.toString())
 
         SmhiAPI().loadSmhidata() { receivedData -> Unit
-            //Log.i("willitrainlog", receivedData.approvedTime.toString())
             var smhitemp = removeFixes(receivedData.timeSeries[0].parameters[10].values.toString())
             Log.i("willitrainlog", "Temp: $smhitemp" )
             binding.smhiTempTV.text = smhitemp.plus("C")
@@ -67,9 +66,9 @@ class StartFragment : Fragment() {
 
         // Set update time
         val tInt = LocalTime.now().toString().substringBefore(".")
-        binding.txtUpdatedAt.text = "${binding.txtUpdatedAt.text} ${tInt}"
+        binding.smhitxtUpdatedAt.text = "${binding.smhitxtUpdatedAt.text} ${tInt}"
 
-        binding.refreshBTN.setOnClickListener(){
+        binding.smhirefreshBTN.setOnClickListener(){
 
         }
 

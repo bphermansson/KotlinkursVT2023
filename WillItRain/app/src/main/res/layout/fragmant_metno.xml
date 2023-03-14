@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".StartFragment">
+
+    <Button
+        android:id="@+id/metnoBtn2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/changeToSmhi"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/metnoWeathersymbol" />
+
+    <TextView
+        android:id="@+id/metnoWeathersymbol"
+        android:layout_width="353dp"
+        android:layout_height="35dp"
+        android:layout_marginEnd="32dp"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/smhiweathertypeLabel"
+        app:layout_constraintTop_toBottomOf="@+id/smhiweathertypeLabel"
+        tools:text="Clear" />
+
+    <TextView
+        android:id="@+id/metnoWinddir"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:textSize="48sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/smhiwinddirLabel"
+        tools:text="100" />
+
+    <TextView
+        android:id="@+id/headlineTV"
+        android:layout_width="400dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="#AFBAFD"
+        android:text="@string/gui_title"
+        android:textAlignment="center"
+        android:textSize="34sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/metnoTV"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/metno_title"
+        android:textAlignment="center"
+        android:textSize="34sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/headlineTV" />
+
+    <TextView
+        android:id="@+id/metnoTempTV"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:textSize="48sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/smhitempLabel"
+        tools:text="32.0C" />
+
+    <TextView
+        android:id="@+id/metnoWindspeed"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:textSize="48sp"
+        app:layout_constraintStart_toStartOf="@+id/smhiwindspeedLabel"
+        app:layout_constraintTop_toBottomOf="@+id/smhiwindspeedLabel"
+        tools:text="25m/S" />
+
+    <TextView
+        android:id="@+id/metnoPressure"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:textSize="34sp"
+        app:layout_constraintStart_toStartOf="@+id/smhipressureLabel"
+        app:layout_constraintTop_toBottomOf="@+id/smhipressureLabel"
+        tools:text="1040hPa" />
+
+    <TextView
+        android:id="@+id/metnoHumTV"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:textSize="48sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/smhihumidityLabel"
+        tools:text="100%" />
+
+    <TextView
+        android:id="@+id/smhitxtUpdatedAt"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="16dp"
+        android:background="#AFBAFD"
+        android:gravity="bottom|center"
+        android:padding="5dip"
+        android:text="@string/updated_at"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/smhirefreshBTN" />
+
+    <Button
+        android:id="@+id/smhirefreshBTN"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/refresh"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.509"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/metnoBtn2" />
+
+    <TextView
+        android:id="@+id/smhitempLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Temperature"
+        app:layout_constraintStart_toStartOf="@+id/metnoTempTV"
+        app:layout_constraintTop_toBottomOf="@+id/metnoTV" />
+
+    <TextView
+        android:id="@+id/smhihumidityLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Humidity"
+        app:layout_constraintStart_toStartOf="@+id/metnoHumTV"
+        app:layout_constraintTop_toBottomOf="@+id/metnoTV" />
+
+    <TextView
+        android:id="@+id/smhiwindspeedLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Wind speed"
+        app:layout_constraintStart_toStartOf="@+id/metnoTempTV"
+        app:layout_constraintTop_toBottomOf="@+id/metnoTempTV" />
+
+    <TextView
+        android:id="@+id/smhiwinddirLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Wind direction"
+        app:layout_constraintStart_toStartOf="@+id/metnoHumTV"
+        app:layout_constraintTop_toBottomOf="@+id/metnoHumTV" />
+
+    <TextView
+        android:id="@+id/smhipressureLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Air pressure"
+        app:layout_constraintStart_toStartOf="@+id/metnoWindspeed"
+        app:layout_constraintTop_toBottomOf="@+id/metnoWindspeed" />
+
+    <TextView
+        android:id="@+id/smhiweathertypeLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Weather type"
+        app:layout_constraintStart_toStartOf="@+id/metnoPressure"
+        app:layout_constraintTop_toBottomOf="@+id/metnoPressure" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
