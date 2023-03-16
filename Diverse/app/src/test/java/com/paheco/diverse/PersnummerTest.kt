@@ -8,7 +8,7 @@ class PersnummerTest {
 
     @Test
     fun personnummerChecker() {
-        var chelp = CalcHelper()
+        var chelp = Calper()
         assertEquals(false, chelp.personnummerChecker(""))
         assertEquals(true, chelp.personnummerChecker("860101-3983"))
         assertEquals(true, chelp.personnummerChecker("920826+6834"))
