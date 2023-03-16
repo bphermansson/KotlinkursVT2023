@@ -9,9 +9,9 @@
     <TextView
         android:id="@+id/smhiWeathersymbol"
         android:layout_width="353dp"
-        android:layout_height="35dp"
+        android:layout_height="wrap_content"
         android:layout_marginEnd="32dp"
-        android:textSize="20sp"
+        android:textSize="34sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/smhiweathertypeLabel"
         app:layout_constraintTop_toBottomOf="@+id/smhiweathertypeLabel"
@@ -146,6 +146,7 @@
         android:id="@+id/smhiwindspeedLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         android:text="Wind speed"
         app:layout_constraintStart_toStartOf="@+id/smhiTempTV"
         app:layout_constraintTop_toBottomOf="@+id/smhiTempTV" />
@@ -154,6 +155,7 @@
         android:id="@+id/smhiwinddirLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         android:text="Wind direction"
         app:layout_constraintStart_toStartOf="@+id/smhiHumTV"
         app:layout_constraintTop_toBottomOf="@+id/smhiHumTV" />
@@ -162,6 +164,7 @@
         android:id="@+id/smhipressureLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         android:text="Air pressure"
         app:layout_constraintStart_toStartOf="@+id/smhiWindspeedTV"
         app:layout_constraintTop_toBottomOf="@+id/smhiWindspeedTV" />
@@ -170,6 +173,7 @@
         android:id="@+id/smhiweathertypeLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         android:text="Weather type"
         app:layout_constraintStart_toStartOf="@+id/smhiPressureTV"
         app:layout_constraintTop_toBottomOf="@+id/smhiPressureTV" />

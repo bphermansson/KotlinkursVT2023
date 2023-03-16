@@ -1,5 +1,6 @@
 package com.paheco.willitrain
 
+import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -28,6 +29,16 @@ class SmhiFragment : Fragment() {
 
         // TODO: Use a map to select location
 
+        fetchSmhiWeather()
+
+        binding.smhirefreshBTN.setOnClickListener(){
+            binding.smhirefreshBTN.setBackgroundColor(Color.RED)
+            fetchSmhiWeather()
+            binding.smhirefreshBTN.setBackgroundColor(Color.BLUE)
+        }
+    }
+
+    fun fetchSmhiWeather() {
         // A view model instance
         var viewModel: MainActivityViewModel = ViewModelProvider(this).get(MainActivityViewModel::class.java)
         SmhiAPI().loadSmhidata() { smhidata ->
@@ -51,19 +62,10 @@ class SmhiFragment : Fragment() {
             }
         }
         viewModel.getLocalTime { ltime ->
-            binding.smhitxtUpdatedAt.text = "${binding.smhitxtUpdatedAt.text} ${ltime}"
+            binding.smhitxtUpdatedAt.text = getString(R.string.updated_at).plus(" ").plus(ltime)
         }
-
-
-        //binding.smhirefreshBTN.setOnClickListener(){
-
-        }
-
-    fun getWeatherdata(view: View){
-        //getSmhiData(view, binding)
-        //getMetnoData(view, binding)
-
     }
+
 /*
     fun getSmhiData(view: View, binding: FragmentStartBinding) {
         val smhiretrofit = SmhiRetrofitClient.getInstance()
