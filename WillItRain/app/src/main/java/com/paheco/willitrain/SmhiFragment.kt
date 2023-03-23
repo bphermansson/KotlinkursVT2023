@@ -1,33 +1,60 @@
 package com.paheco.willitrain
 
+import android.Manifest
+import android.app.Activity
+import android.content.pm.PackageManager
 import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.databinding.DataBindingUtil
+import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.app.ActivityCompat
+import androidx.core.app.ActivityCompat.requestPermissions
+import androidx.core.content.ContextCompat
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationRequest
+import com.google.android.gms.location.LocationServices
 import com.paheco.willitrain.databinding.FragmentSmhiBinding
-import java.time.LocalTime
+
 
 class SmhiFragment : Fragment() {
     private  var _binding: FragmentSmhiBinding? = null
     private  val binding get() = _binding!!
 
+    var logTag = MainActivity.logTag
+    private lateinit var fusedLocationClient: FusedLocationProviderClient
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+
         _binding = FragmentSmhiBinding.inflate(inflater, container, false)
         return binding.root
+
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+/*
+        val permissionLauncher = registerForActivityResult(
+            ActivityResultContracts.RequestPermission()
+        ) { isGranted ->
+            if(isGranted) {
+                Log.i(MainActivity.logTag, "granted")
+            }
+            else{
+                Log.i(MainActivity.logTag, "Denied")
+            }
+        }
+        permissionLauncher.launch(Manifest.permission.ACCESS_FINE_LOCATION)
 
-        // TODO: Use a map to select location
+ */
 
         fetchSmhiWeather()
 
@@ -64,6 +91,44 @@ class SmhiFragment : Fragment() {
         viewModel.getLocalTime { ltime ->
             binding.smhitxtUpdatedAt.text = getString(R.string.updated_at).plus(" ").plus(ltime)
         }
+    }
+
+
+    fun getPosition() {
+
+
+        val locationPermissionRequest = registerForActivityResult(
+            ActivityResultContracts.RequestMultiplePermissions()
+        ) { permissions ->
+            when {
+                permissions.getOrDefault(android.Manifest.permission.ACCESS_FINE_LOCATION, false) -> {
+                    //findme()
+                    Log.i(MainActivity.logTag, "FINE")
+                }
+                permissions.getOrDefault(android.Manifest.permission.ACCESS_COARSE_LOCATION, false) -> {
+                    Log.i(MainActivity.logTag, "Coarse")
+                } else -> {
+                Log.i(MainActivity.logTag, "Permission error")
+            }
+            }
+        }
+        locationPermissionRequest.launch(arrayOf(
+            android.Manifest.permission.ACCESS_FINE_LOCATION,
+            android.Manifest.permission.ACCESS_COARSE_LOCATION)
+        )
+
+        ActivityCompat.requestPermissions(
+            Activity(),
+            arrayOf(android.Manifest.permission.ACCESS_FINE_LOCATION), 1
+        )
+
+        //val gotPerm = checkSelfPermission(ACCESS_FINE_LOCATION)
+        //Log.i(logTag, "Got perm = $gotPerm")    // 0 = got permission. -1 = No permissions, ask.
+
+        //if (gotPerm == -1) {
+        //    Snackbar.make(findViewById<View>(R.id.fragmentContainerView2), "Position permission denied", Snackbar.LENGTH_SHORT).show()
+
+
     }
 
 /*

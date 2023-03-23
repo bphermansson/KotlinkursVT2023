@@ -2,11 +2,14 @@
     <string name="app_name">Will It Rain</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="gui_title">Will it rain?</string>
+    <string name="gui_title" />
     <string name="smhi_title">SMHI</string>
     <string name="metno_title">MET.NO</string>
     <string name="updated_at">Updated at:</string>
     <string name="refresh">Refresh</string>
     <string name="changeToMetno">Met.no</string>
     <string name="changeToSmhi">Smhi</string>
+    <string name="action_settings">Settings</string>
+    <string name="action_share">Oh no, dont!</string>
+    <string name="action_perm">Permissions</string>
 </resources>

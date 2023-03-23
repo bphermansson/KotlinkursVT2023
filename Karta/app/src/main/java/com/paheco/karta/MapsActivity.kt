@@ -1,15 +1,11 @@
 package com.paheco.karta
 
-import android.Manifest.permission.ACCESS_COARSE_LOCATION
-import android.Manifest.permission.ACCESS_FINE_LOCATION
-import android.location.Location
-import android.location.LocationRequest
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.result.contract.ActivityResultContracts
 import com.google.android.gms.location.FusedLocationProviderClient
-import com.google.android.gms.location.LocationRequest.PRIORITY_HIGH_ACCURACY
+import com.google.android.gms.location.LocationRequest
 import com.google.android.gms.location.LocationServices
 
 import com.google.android.gms.maps.CameraUpdateFactory
@@ -76,7 +72,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, OnMarkerClickListe
                 Log.i("pia11debug", "FAIL")
             }
          */
-        fusedLocationClient.getCurrentLocation(LocationRequest.PRIORITY_HIGH_ACCURACY, null).addOnSuccess{
+        fusedLocationClient.getCurrentLocation(LocationRequest.PRIORITY_HIGH_ACCURACY, null).addOnSuccessListener { location ->
             Log.i("pia11debug", "HURRA")
             Log.i("pia11debug", location.latitude.toString())
             Log.i("pia11debug", location.longitude.toString())
@@ -107,6 +103,6 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, OnMarkerClickListe
 
     override fun onMarkerClick(p0: Marker): Boolean {
 
-        return false    // Vi tart inte hand om klicket
+        return false    // Vi tar inte hand om klicket
     }
 }
