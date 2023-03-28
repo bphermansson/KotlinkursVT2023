@@ -5,25 +5,8 @@ import androidx.lifecycle.ViewModel
 import java.time.LocalTime
 
 class MainActivityViewModel : ViewModel() {
-    var number = 8
+    // If this is a shared viewmodel, we could store values here
 
-    fun addOne() {
-        number++
-    }
-    fun getSmhiData() {
-        SmhiAPI().loadSmhidata() { receivedData ->
-            Unit
-            /*
-
-
-
-
-
-
-
-             */
-        }
-    }
     fun getSmhiTemp( receivedData : Smhidata, callback: (String) -> Unit) {
         var smhitemp = removeFixes(receivedData.timeSeries[0].parameters[10].values.toString())
         Log.i("willitrainlog", "Temp: $smhitemp" )
@@ -32,16 +15,19 @@ class MainActivityViewModel : ViewModel() {
 
     fun getSmhiHum( receivedData : Smhidata, callback: (String) -> Unit) {
         var smhiHum = removeFixes(receivedData.timeSeries[0].parameters[15].values.toString()).plus("%")
+        Log.i("willitrainlog", "Humidity: $smhiHum" )
         callback(smhiHum)
     }
 
     fun getSmhiPressure( receivedData : Smhidata, callback: (String) -> Unit) {
         var smhiPressure = receivedData.timeSeries[0].parameters[11].values[0].toString().plus("hPa")
+        Log.i("willitrainlog", "Air pressure: $smhiPressure" )
         callback (smhiPressure)
     }
 
     fun getSmhiWindspeed( receivedData : Smhidata, callback: (String) -> Unit) {
         var smhiWindspeed = receivedData.timeSeries[0].parameters[14].values[0].toString().plus("m/S")
+        Log.i("willitrainlog", "Wind speed: $smhiWindspeed" )
         callback(smhiWindspeed)
     }
     fun getSmhiWinddir( receivedData : Smhidata, callback: (String) -> Unit) {
@@ -109,6 +95,7 @@ class MainActivityViewModel : ViewModel() {
     }
     fun getLocalTime(callback: (String) -> Unit){
         val lTime = LocalTime.now().toString().substringBefore(".")
+        Log.i("willitrainlog", "Local time: $lTime" )
         callback(lTime)
     }
     fun removeFixes(string : String) : String{
