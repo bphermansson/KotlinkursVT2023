@@ -11,4 +11,6 @@
     <string name="changeToMetno">Met.no</string>
     <string name="changeToSmhi">Smhi</string>
     <string name="action_about">About</string>
+    <string name="iconInfo">Icons by ColourCreatype, https://freeicons.io/icon-list/weather-icon-set-4</string>
+    <string name="copyright">Copyright © Paheco 2023</string>
 </resources>

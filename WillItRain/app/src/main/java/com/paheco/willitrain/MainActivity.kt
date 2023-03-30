@@ -1,6 +1,9 @@
 package com.paheco.willitrain
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.appcompat.widget.Toolbar
 
 class MainActivity : AppCompatActivity() {
     companion object {
@@ -17,5 +20,11 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        val toolbar = findViewById(R.id.toolbar) as Toolbar?
+                toolbar?.title = "Androidly"
+                toolbar?.setNavigationOnClickListener {
+                    supportFragmentManager.beginTransaction().replace(R.id.fragmentContainerView2, InfoFragment()).commit()
+                }
     }
 }

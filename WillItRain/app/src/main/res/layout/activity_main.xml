@@ -25,6 +25,7 @@
         android:background="?attr/colorPrimary"
         android:theme="@style/ThemeOverlay.AppCompat.Dark"
         app:layout_constraintTop_toTopOf="parent"
-    />
+        app:navigationIcon="@android:drawable/ic_dialog_info"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
