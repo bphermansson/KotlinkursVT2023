@@ -2,6 +2,8 @@ package com.paheco.willitrain
 
 class MetNo {
     /*
+    TODO: Fix and use this.
+
     fun getMetnoData(view: View, binding: FragmentStartBinding) {
         val metnoretrofit = MetnoRetrofitClient.getInstance()
         val metnoApiInterface = metnoretrofit.create(MetnoApiInterface::class.java)

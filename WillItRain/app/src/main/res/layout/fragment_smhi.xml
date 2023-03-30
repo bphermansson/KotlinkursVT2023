@@ -28,19 +28,6 @@
         tools:text="100" />
 
     <TextView
-        android:id="@+id/headlineTV"
-        android:layout_width="400dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:background="#AFBAFD"
-        android:text="@string/gui_title"
-        android:textAlignment="center"
-        android:textSize="34sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
         android:id="@+id/smhiTV"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -50,7 +37,7 @@
         android:textSize="34sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/headlineTV" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/smhiTempTV"
@@ -91,7 +78,7 @@
         tools:text="100%" />
 
     <TextView
-        android:id="@+id/smhitxtUpdatedAt"
+        android:id="@+id/smhitxtUpdatedAtTV"
         android:layout_width="0dp"
         android:layout_height="40dp"
         android:layout_marginTop="16dp"
@@ -110,16 +97,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="@string/refresh"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/metnoBtn" />
-
-    <Button
-        android:id="@+id/metnoBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="@string/changeToMetno"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/smhiWeathersymbol" />
@@ -177,5 +154,18 @@
         android:text="Weather type"
         app:layout_constraintStart_toStartOf="@+id/smhiPressureTV"
         app:layout_constraintTop_toBottomOf="@+id/smhiPressureTV" />
+
+    <TextView
+        android:id="@+id/smhiLocationTV"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="16dp"
+        android:background="#AFBAFD"
+        android:text="@string/location"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/smhitxtUpdatedAtTV" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
