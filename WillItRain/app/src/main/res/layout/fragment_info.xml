@@ -4,27 +4,42 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#B6CFE8"
+    android:background="#CFDCE8"
     tools:context=".InfoFragment">
 
     <TextView
-        android:id="@+id/tvIconInfo"
+        android:id="@+id/iconInfoTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
+        android:padding="5dp"
         android:text="@string/iconInfo"
+        android:textColor="#020202"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvCopyright" />
+        app:layout_constraintTop_toBottomOf="@+id/copyrightTV" />
 
     <TextView
-        android:id="@+id/tvCopyright"
+        android:id="@+id/copyrightTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="@string/copyright"
+        android:textColor="#000000"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/licenseTV"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:padding="5dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iconInfoTV"
+        android:scrollbars = "vertical"
+        tools:text="License text" />
 </androidx.constraintlayout.widget.ConstraintLayout>
