@@ -43,8 +43,5 @@ class InfoFragment : Fragment() {
     ): View? {
         _binding = FragmentInfoBinding.inflate(inflater, container, false)
         return binding.root
-
-        // Inflate the layout for this fragment
-        //return inflater.inflate(R.layout.fragment_info, container, false)
     }
 }

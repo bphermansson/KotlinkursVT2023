@@ -37,9 +37,11 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:padding="5dp"
+        android:scrollbars="vertical"
+        android:textColor="#070707"
+        android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/iconInfoTV"
-        android:scrollbars = "vertical"
         tools:text="License text" />
 </androidx.constraintlayout.widget.ConstraintLayout>

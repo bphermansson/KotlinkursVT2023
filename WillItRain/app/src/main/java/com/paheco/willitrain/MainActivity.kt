@@ -22,17 +22,9 @@ class MainActivity : AppCompatActivity() {
 
         val toolbar = findViewById(R.id.toolbar) as Toolbar?
         toolbar?.setNavigationOnClickListener {
-            supportFragmentManager.beginTransaction().replace(R.id.fragmentContainerView2, InfoFragment()).commit()
+            supportFragmentManager.beginTransaction().add(R.id.fragmentContainerView2,
+                InfoFragment()).addToBackStack(null).commit()
+            // TODO: Add to back stack!
         }
-/*
-        val file_name = "LICENSE.md"
-        val bufferReader = application.assets.open(file_name).bufferedReader()
-        val data = bufferReader.use {
-            it.readText()
-        }
-        Log.d(logTag,  data)
-
- */
     }
-
 }

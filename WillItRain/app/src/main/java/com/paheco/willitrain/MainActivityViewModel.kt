@@ -89,7 +89,7 @@ class MainActivityViewModel : ViewModel() {
         )
         val wSymbol = wType[smhiWeathersymbol.values[0].toInt()]
         Log.i("willitrainlog", "Weather type: $wSymbol")
-        // TODO: Get weather symbols
+        // TODO: Get weather symbols to show instead of text
         //binding.smhiWeathersymbol.text = wSymbol
         callback(wSymbol)
     }

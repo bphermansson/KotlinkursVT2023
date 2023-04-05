@@ -66,7 +66,6 @@ class SmhiFragment : Fragment() {
                     Snackbar.make(view, "No permission to get location, using default value ", Snackbar.LENGTH_LONG).show();
                     // If the user has denied access the app won't ask again, no mather what.
                     // https://developer.android.com/training/permissions/requesting#handle-denial
-                    // binding.smhiLocationTV.text = "Unknown location"
                 }
             }
         }
@@ -89,7 +88,7 @@ class SmhiFragment : Fragment() {
             binding.smhirefreshBTN.setBackgroundColor(Color.BLUE)
         }
         binding.smhiLocationTV.setOnClickListener(){
-            // get perm. No this aint possible.
+            // get perm. No this ain't possible.
         }
     }
 
@@ -120,46 +119,6 @@ class SmhiFragment : Fragment() {
             binding.smhitxtUpdatedAtTV.text = getString(R.string.updated_at).plus(" ").plus(ltime)
         }
     }
- /*
-    fun getPosition() {
-        val locationPermissionRequest = registerForActivityResult(
-            ActivityResultContracts.RequestMultiplePermissions()
-        ) { permissions ->
-            when {
-                permissions.getOrDefault(android.Manifest.permission.ACCESS_FINE_LOCATION, false) -> {
-                    //findme()
-                    Log.i(MainActivity.logTag, "FINE")
-                }
-                permissions.getOrDefault(android.Manifest.permission.ACCESS_COARSE_LOCATION, false) -> {
-                    Log.i(MainActivity.logTag, "Coarse")
-                } else -> {
-                Log.i(MainActivity.logTag, "Permission error")
-            }
-            }
-        }
-        locationPermissionRequest.launch(arrayOf(
-            android.Manifest.permission.ACCESS_FINE_LOCATION,
-            android.Manifest.permission.ACCESS_COARSE_LOCATION)
-        )
-
-        ActivityCompat.requestPermissions(
-            Activity(),
-            arrayOf(android.Manifest.permission.ACCESS_FINE_LOCATION), 1
-        )
-
-        //val gotPerm = checkSelfPermission(ACCESS_FINE_LOCATION)
-        //Log.i(logTag, "Got perm = $gotPerm")    // 0 = got permission. -1 = No permissions, ask.
-
-        //if (gotPerm == -1) {
-        //    Snackbar.make(findViewById<View>(R.id.fragmentContainerView2), "Position permission denied", Snackbar.LENGTH_SHORT).show()
-
-
-    }
-
-
-  */
-
-
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
