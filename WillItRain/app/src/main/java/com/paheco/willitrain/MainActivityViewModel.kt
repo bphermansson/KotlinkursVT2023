@@ -1,10 +1,47 @@
 package com.paheco.willitrain
 
 import android.util.Log
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import java.time.LocalTime
 
 class MainActivityViewModel : ViewModel() {
+    val tempValue: MutableLiveData<String> by lazy { MutableLiveData<String>() }
+    val humidityValue: MutableLiveData<String> by lazy { MutableLiveData<String>() }
+    val windSpeedValue: MutableLiveData<String> by lazy { MutableLiveData<String>() }
+    val windDirectionValue: MutableLiveData<String> by lazy { MutableLiveData<String>() }
+    val airPressureValue: MutableLiveData<String> by lazy { MutableLiveData<String>() }
+    val weatherTypeValue: MutableLiveData<String> by lazy { MutableLiveData<String>() }
+    var timeValue = MutableLiveData<String>()
+
+    fun fetchSmhiWeather() {
+        // Get data and update UI
+        SmhiAPI().loadSmhidata() { smhidata ->
+            getSmhiTemp(smhidata) { smhitemp -> Unit
+                tempValue.postValue(smhitemp)
+            }
+            getSmhiHum(smhidata) { smhihum ->
+                humidityValue.postValue(smhihum)
+            }
+            getSmhiPressure(smhidata) { smhipres ->
+
+                airPressureValue.postValue(smhipres)
+            }
+            getSmhiWindspeed(smhidata) { smhiws ->
+
+                windSpeedValue.postValue(smhiws)
+            }
+            getSmhiWinddir(smhidata) { smhiwd ->
+                windDirectionValue.postValue(smhiwd)
+            }
+            getSmhiWeathersymbol(smhidata) { smhiwsym ->
+                weatherTypeValue.postValue(smhiwsym)
+            }
+            getLocalTime() { ltime ->
+                timeValue.postValue(ltime)
+            }
+        }
+        }
 
     fun getSmhiTemp( receivedData : Smhidata, callback: (String) -> Unit) {
         val smhitemp = removeFixes(receivedData.timeSeries[0].parameters[10].values.toString())
@@ -90,7 +127,6 @@ class MainActivityViewModel : ViewModel() {
         val wSymbol = wType[smhiWeathersymbol.values[0].toInt()]
         Log.i("willitrainlog", "Weather type: $wSymbol")
         // TODO: Get weather symbols to show instead of text
-        //binding.smhiWeathersymbol.text = wSymbol
         callback(wSymbol)
     }
     fun getLocalTime(callback: (String) -> Unit){

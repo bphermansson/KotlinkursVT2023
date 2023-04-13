@@ -1,24 +1,16 @@
 package com.paheco.willitrain
 import android.os.Bundle
 import android.text.method.ScrollingMovementMethod
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentContainerView
 import com.paheco.willitrain.databinding.FragmentInfoBinding
-import com.paheco.willitrain.databinding.FragmentSmhiBinding
-import kotlinx.serialization.json.JsonNull.content
-
 
 class InfoFragment : Fragment() {
     private  var _binding: FragmentInfoBinding? = null
     private  val binding get() = _binding!!
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -27,13 +19,14 @@ class InfoFragment : Fragment() {
         val bufferReader = activity?.assets?.open(file_name)?.bufferedReader()
         val data = bufferReader.use {
             it?.readText()
-
         }
-
-        //Log.d(MainActivity.logTag,  data.toString())
-        //MainActivity().findViewById<TextView>(R.id.licenseTV).text = data
         binding.licenseTV.text = data
         binding.licenseTV.movementMethod = ScrollingMovementMethod()
+
+        binding.licenseTV.setOnClickListener {
+            requireActivity().supportFragmentManager.beginTransaction().replace(R.id.fragmentContainerView2,
+                SmhiFragment()).addToBackStack(null).commit()
+        }
 
     }
 
