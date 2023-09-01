@@ -1,11 +1,11 @@
 package com.paheco.willitrain
-import androidx.appcompat.app.AppCompatActivity
+
+import android.R
 import android.os.Bundle
-import android.util.Log
-import androidx.activity.viewModels
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
+import android.widget.Spinner
+import androidx.appcompat.app.AppCompatActivity
 import com.paheco.willitrain.databinding.ActivityMainBinding
+
 
 class MainActivity : AppCompatActivity() {
     companion object {
@@ -24,5 +24,7 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
+
+
     }
 }

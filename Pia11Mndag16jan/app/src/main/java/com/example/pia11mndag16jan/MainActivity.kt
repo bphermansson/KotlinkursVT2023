@@ -6,6 +6,7 @@ import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
@@ -27,6 +28,8 @@ class MainActivity : AppCompatActivity() {
             var addname = findViewById<EditText>(R.id.addpersonET).text.toString()
             Log.i("pia11debug", addname)
             personadapter.people.add(addname)
+            personadapter.notifyDataSetChanged()
         }
     }
+
 }

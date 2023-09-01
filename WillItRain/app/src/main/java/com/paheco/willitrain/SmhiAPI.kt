@@ -28,7 +28,6 @@ class SmhiAPI {
 
                     Log.i("willitrainlog", "Response: " + resString)
                     val smhiData = Json{ignoreUnknownKeys = true}.decodeFromString<Smhidata>(resString)
-                    //Log.i("willitrainlog", "Approved time " + smhiData.approvedTime)
                     callback(smhiData)
                 }
             }

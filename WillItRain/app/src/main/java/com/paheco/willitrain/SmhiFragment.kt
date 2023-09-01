@@ -1,9 +1,15 @@
 package com.paheco.willitrain
 
+import android.Manifest
+import android.content.Context
+import android.content.pm.PackageManager
 import android.os.Bundle
 import android.util.Log
 import android.view.*
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -14,13 +20,13 @@ import com.google.android.material.snackbar.Snackbar
 import com.paheco.willitrain.databinding.FragmentSmhiBinding
 import java.text.DecimalFormat
 
+
 class SmhiFragment : Fragment() {
     private  var _binding: FragmentSmhiBinding? = null
     private  val binding get() = _binding!!
 
     var logTag = MainActivity.logTag
     private lateinit var fusedLocationClient: FusedLocationProviderClient
-
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -35,8 +41,24 @@ class SmhiFragment : Fragment() {
 
         var model: MainActivityViewModel = ViewModelProvider(this).get(MainActivityViewModel::class.java)
 
-        binding.refreshBTN.setOnClickListener {
-            model.fetchSmhiWeather()
+        val spinnerHours = binding.spinnerHoursAhead
+        val adapter = ArrayAdapter.createFromResource(
+            requireActivity()!!.getBaseContext(),
+            R.array.hours,
+            android.R.layout.simple_spinner_item
+        )
+        //adapter.setDropDownViewResource(android.R.layout.my_spinner)
+        spinnerHours.setAdapter(adapter);
+
+        spinnerHours?.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+                println("Nothing Selected")
+            }
+
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                println(position)
+                model.fetchSmhiWeather(position+1)
+            }
         }
 
         // Create the observers which updates the UI.
@@ -66,7 +88,6 @@ class SmhiFragment : Fragment() {
             binding.smhiWillItRainAnswer.text = oldWillitrainText.plus(" ").plus(ans)
             binding.smhiWeathersymbol.text = weathertype
         }
-        //val timeObserver = Observer<String> { ltime ->
         val timeObserver = Observer<String> { ltime ->
             val oldUpdatedText = getString(R.string.updated_at)
             val newText = oldUpdatedText.plus(" ").plus(ltime)
@@ -89,6 +110,23 @@ class SmhiFragment : Fragment() {
             when {
                 permissions.getOrDefault(android.Manifest.permission.ACCESS_FINE_LOCATION, false) -> {
                     Log.i(logTag, "Permission fine")
+                    if (ActivityCompat.checkSelfPermission(
+                            requireActivity()!!.getBaseContext(),
+                            Manifest.permission.ACCESS_FINE_LOCATION
+                        ) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
+                            requireActivity()!!.getBaseContext(),
+                            Manifest.permission.ACCESS_COARSE_LOCATION
+                        ) != PackageManager.PERMISSION_GRANTED
+                    ) {
+                        // TODO: Consider calling
+                        //    ActivityCompat#requestPermissions
+                        // here to request the missing permissions, and then overriding
+                        //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+                        //                                          int[] grantResults)
+                        // to handle the case where the user grants the permission. See the documentation
+                        // for ActivityCompat#requestPermissions for more details.
+                        return@registerForActivityResult
+                    }
                     fusedLocationClient.getCurrentLocation(LocationRequest.PRIORITY_HIGH_ACCURACY, null).addOnSuccessListener { location ->
 
                         // We have permission to get the current location. let's use this.
@@ -123,13 +161,14 @@ class SmhiFragment : Fragment() {
             android.Manifest.permission.ACCESS_COARSE_LOCATION)
         )
 
-        model.fetchSmhiWeather()
-/*
+        var hoursAhead : Int = binding.spinnerHoursAhead.selectedItem.toString().toInt()
+        model.fetchSmhiWeather(hoursAhead)
+    /*
             // TODO: Implement weather from met.no
             Log.i(MainActivity.logTag, "Met.no button clicked")
             // Load Met.no fragment
         }
-*/
+    */
     }
 
     override fun onDestroyView() {
